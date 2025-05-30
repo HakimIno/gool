@@ -1,36 +1,36 @@
 # Gool - Go Project Scaffolding Tool
 
-Gool เป็น CLI tool ที่ทันสมัย ยืดหยุ่น และครอบคลุมสำหรับการสร้างโปรเจค Go พร้วมโครงสร้างที่ปรับแต่งได้ ไฟล์ที่ตั้งค่าล่วงหน้า และ dependencies สร้างแอปพลิเคชัน Go ที่พร้อมใช้งานในระดับ production ได้ในไม่กี่วินาที!
+Gool is a modern, flexible, and comprehensive CLI tool for generating Go projects with customizable structure, pre-configured files, and dependencies. Build production-ready Go applications in seconds!
 
-## 🚀 คุณสมบัติ
+## 🚀 Features
 
-### คุณสมบัติหลัก
-- **Web Frameworks หลากหลาย**: เลือกจาก Gin, Echo, Fiber, หรือ Revel
-- **รองรับฐานข้อมูล**: PostgreSQL, MySQL, SQLite, MongoDB, Redis, หรือ in-memory store
-- **ORM/Database Access**: GORM, sqlx, raw SQL, หรือไม่ใช้
-- **Architecture Patterns**: Simple, Clean Architecture, Hexagonal (Ports & Adapters), MVC, หรือ Custom
-- **รูปแบบ Configuration**: รองรับ YAML, JSON, หรือ TOML พร้อม environment-specific configs
-- **Authentication**: JWT, OAuth2, หรือ Basic Auth พร้อม templates ที่พร้อมใช้
-- **Middleware**: CORS, Rate Limiting, Logging, และ Authentication middleware
-- **Testing**: Unit test และ integration test templates
-- **Logging & Monitoring**: Standard log, Logrus, หรือ Zap พร้อม Prometheus metrics
+### Core Features
+- **Multiple Web Frameworks**: Choose from Gin, Echo, Fiber, or Revel
+- **Database Support**: PostgreSQL, MySQL, SQLite, MongoDB, Redis, or in-memory store
+- **ORM/Database Access**: GORM, sqlx, raw SQL, or none
+- **Architecture Patterns**: Simple, Clean Architecture, Hexagonal (Ports & Adapters), MVC, or Custom
+- **Configuration Formats**: YAML, JSON, or TOML support with environment-specific configs
+- **Authentication**: JWT, OAuth2, or Basic Auth with ready-to-use templates
+- **Middleware**: CORS, Rate Limiting, Logging, and Authentication middleware
+- **Testing**: Unit test and integration test templates
+- **Logging & Monitoring**: Standard log, Logrus, or Zap with Prometheus metrics
 
-### คุณสมบัติเพิ่มเติม
-- **WebSocket Support**: Templates สำหรับแอปพลิเคชัน real-time
-- **Error Handling**: การจัดการ error แบบ centralized พร้อม custom error types
-- **Caching**: รองรับ In-memory, Redis, หรือ Memcached
-- **Message Queues**: RabbitMQ, Kafka, หรือ NATS สำหรับ async tasks
-- **Security**: HTTPS, secure headers (HSTS, CSP), และ CSRF protection
-- **API Documentation**: การสร้าง OpenAPI/Swagger
-- **Docker & Deployment**: Dockerfile และ docker-compose.yml
-- **CI/CD**: Templates สำหรับ GitHub Actions และ GitLab CI
+### Additional Features
+- **WebSocket Support**: Real-time application templates
+- **Error Handling**: Centralized error handling with custom error types
+- **Caching**: In-memory, Redis, or Memcached support
+- **Message Queues**: RabbitMQ, Kafka, or NATS for async tasks
+- **Security**: HTTPS, secure headers (HSTS, CSP), and CSRF protection
+- **API Documentation**: OpenAPI/Swagger generation
+- **Docker & Deployment**: Dockerfile and docker-compose.yml
+- **CI/CD**: GitHub Actions and GitLab CI templates
 - **Health Checks**: Built-in /health endpoint
-- **Internationalization**: รองรับหลายภาษา
-- **Cloud Integration**: การตั้งค่าสำหรับ deployment บน AWS, GCP, และ Azure
+- **Internationalization**: Multi-language support
+- **Cloud Integration**: AWS, GCP, and Azure deployment configs
 
-## 📦 การติดตั้ง
+## 📦 Installation
 
-### วิธีที่ 1: ติดตั้งจาก source code
+### Option 1: Install from source
 ```bash
 # Clone repository
 git clone https://github.com/HakimIno/gool.git
@@ -39,77 +39,77 @@ cd gool
 # Build binary
 go build -o gool main.go
 
-# ติดตั้งไปยัง system PATH (macOS/Linux)
+# Install to system PATH (macOS/Linux)
 sudo mv gool /usr/local/bin/
 
-# หรือสำหรับ Windows
-# ย้าย gool.exe ไปยัง directory ที่อยู่ใน PATH
+# Or for Windows
+# Move gool.exe to a directory in your PATH
 ```
 
-### วิธีที่ 2: Go Install (เมื่อ publish แล้ว)
+### Option 2: Go Install (when published)
 ```bash
 go install github.com/HakimIno/gool@latest
 ```
 
-### วิธีที่ 3: Download binary (เมื่อมี releases)
-Download binary ล่าสุดจาก [releases page](https://github.com/HakimIno/gool/releases)
+### Option 3: Download binary (when available)
+Download the latest binary from the [releases page](https://github.com/HakimIno/gool/releases)
 
-## 🛠️ การ Setup โปรเจคใหม่
+## 🛠️ Development Setup
 
-### สำหรับผู้พัฒนา (การตั้งค่า Git Repository)
+### For Developers (Git Repository Setup)
 
-หากคุณต้องการสร้าง repository ของตัวเอง:
+If you want to create your own repository:
 
 ```bash
-# 1. สร้าง repository ใหม่บน GitHub
-# 2. Clone หรือ setup local repository
+# 1. Create a new repository on GitHub
+# 2. Clone or setup local repository
 git init
 git add .
 git commit -m "Initial commit"
 
-# 3. เพิ่ม remote repository
+# 3. Add remote repository
 git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
 
-# 4. Push ขึ้น GitHub
+# 4. Push to GitHub
 git branch -M main
 git push -u origin main
 ```
 
-### การ build และทดสอบ
+### Build and Testing
 
 ```bash
-# ติดตั้ง dependencies
+# Install dependencies
 go mod tidy
 
 # Build binary
 go build -o gool main.go
 
-# ทดสอบ command
+# Test commands
 ./gool --help
 ./gool version
 ```
 
-## 🎯 การเริ่มต้นใช้งาน
+## 🎯 Quick Start
 
-### Interactive Mode (แนะนำ)
+### Interactive Mode (Recommended)
 ```bash
 gool init my-awesome-app
 ```
 
-จะมีคำถามให้คุณตอบเพื่อปรับแต่งโปรเจค:
-- ชื่อโปรเจคและ module path
-- เลือก Web framework
-- ตั้งค่าฐานข้อมูลและ ORM
-- เลือก Architecture pattern
-- วิธี Authentication
-- คุณสมบัติและ middleware เพิ่มเติม
+This will prompt you through a series of questions to customize your project:
+- Project name and module path
+- Web framework selection
+- Database and ORM preferences
+- Architecture pattern
+- Authentication method
+- Additional features and middleware
 
 ### Non-Interactive Mode
 ```bash
 gool init my-app --framework=gin --orm=gorm --database=postgresql --arch=simple
 ```
 
-### ตัวเลือกที่มี
+### Available Options
 ```bash
 # Framework options
 --framework=gin|echo|fiber|revel
@@ -124,7 +124,7 @@ gool init my-app --framework=gin --orm=gorm --database=postgresql --arch=simple
 --arch=simple|clean|hexagonal|mvc|custom
 ```
 
-## 📂 โครงสร้างโปรเจคที่สร้าง
+## 📂 Generated Project Structure
 
 ### Simple Architecture
 ```
@@ -186,9 +186,9 @@ my-app/
 └── ...
 ```
 
-## 🔧 ตัวอย่างการใช้งาน
+## 🔧 Usage Examples
 
-### สร้าง simple web API
+### Generate a simple web API
 ```bash
 gool init my-api \
   --framework=gin \
@@ -197,7 +197,7 @@ gool init my-api \
   --arch=simple
 ```
 
-### สร้าง microservice ด้วย clean architecture
+### Generate a microservice with clean architecture
 ```bash
 gool init my-service \
   --framework=echo \
@@ -206,74 +206,74 @@ gool init my-service \
   --arch=clean
 ```
 
-### สร้าง full-stack application
+### Generate a full-stack application
 ```bash
-# Interactive mode จะถามเกี่ยวกับ:
+# Interactive mode will ask about:
 # - Static file serving
 # - Template engine
 # - WebSocket support
 # - Authentication
-# - และอื่นๆ...
+# - And more...
 gool init my-fullstack-app
 ```
 
-## 🏃‍♂️ รันโปรเจคที่สร้างแล้ว
+## 🏃‍♂️ Running Your Generated Project
 
-หลังจากสร้างโปรเจคแล้ว:
+After generating your project:
 
 ```bash
 cd my-app
 
-# ติดตั้ง dependencies
+# Install dependencies
 go mod tidy
 
-# คัดลอกและตั้งค่า environment
+# Copy and configure environment
 cp .env.example .env
-# แก้ไข .env ด้วยข้อมูล database credentials
+# Edit .env with your database credentials
 
-# รันแอปพลิเคชัน
+# Run the application
 go run main.go
 
-# หรือ build และรัน
+# Or build and run
 go build -o app main.go
 ./app
 ```
 
-### ด้วย Docker
+### With Docker
 ```bash
-# เริ่ม services (database, redis, etc.)
+# Start services (database, redis, etc.)
 docker-compose up -d
 
-# Build และรัน app
+# Build and run your app
 docker build -t my-app .
 docker run -p 8080:8080 my-app
 ```
 
-## 🧪 การทดสอบ
+## 🧪 Testing
 
-โปรเจคที่สร้างจะมี test templates:
+Generated projects include test templates:
 
 ```bash
-# รัน unit tests
+# Run unit tests
 go test ./...
 
-# รัน tests พร้อม coverage
+# Run tests with coverage
 go test -cover ./...
 
-# รัน integration tests
+# Run integration tests
 go test -tags=integration ./test/...
 ```
 
-## 📖 เอกสาร API
+## 📖 API Documentation
 
-หากเปิดใช้งาน Swagger documentation, เยี่ยมชม:
+If you enabled Swagger documentation, visit:
 ```
 http://localhost:8080/swagger/index.html
 ```
 
-## 🎛️ การตั้งค่า
+## 🎛️ Configuration
 
-โปรเจคที่สร้างรองรับการตั้งค่าตาม environment:
+Generated projects support environment-based configuration:
 
 ```bash
 # Development
@@ -293,27 +293,27 @@ Built-in health check endpoint:
 curl http://localhost:8080/api/v1/health
 ```
 
-## 🤝 การมีส่วนร่วม
+## 🤝 Contributing
 
-เรายินดีรับการมีส่วนร่วม! โปรดดู [Contributing Guide](CONTRIBUTING.md) สำหรับรายละเอียด
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
-## 📝 ใบอนุญาต
+## 📝 License
 
-โปรเจคนี้ได้รับอนุญาตภายใต้ MIT License - ดูไฟล์ [LICENSE](LICENSE) สำหรับรายละเอียด
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 กิตติกรรมประกาศ
+## 🙏 Acknowledgments
 
-- [Cobra](https://github.com/spf13/cobra) สำหรับ CLI framework
-- [Viper](https://github.com/spf13/viper) สำหรับ configuration management
-- [Survey](https://github.com/AlecAivazis/survey) สำหรับ interactive prompts
-- ชุมชน Go สำหรับ libraries และ tools ที่ยอดเยี่ยม
+- [Cobra](https://github.com/spf13/cobra) for CLI framework
+- [Viper](https://github.com/spf13/viper) for configuration management
+- [Survey](https://github.com/AlecAivazis/survey) for interactive prompts
+- The Go community for amazing libraries and tools
 
-## 📞 การสนับสนุน
+## 📞 Support
 
-- 📚 [เอกสาร](https://github.com/HakimIno/gool/wiki)
+- 📚 [Documentation](https://github.com/HakimIno/gool/wiki)
 - 🐛 [Issue Tracker](https://github.com/HakimIno/gool/issues)
 - 💬 [Discussions](https://github.com/HakimIno/gool/discussions)
 
 ---
 
-สร้างด้วย ❤️ โดยทีม Gool
+Made with ❤️ by the Gool team
