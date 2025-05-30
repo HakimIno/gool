@@ -1,5 +1,10 @@
 # Gool - Go Project Scaffolding Tool
 
+[![CI](https://github.com/HakimIno/gool/actions/workflows/ci.yml/badge.svg)](https://github.com/HakimIno/gool/actions/workflows/ci.yml)
+[![Release](https://github.com/HakimIno/gool/actions/workflows/release.yml/badge.svg)](https://github.com/HakimIno/gool/actions/workflows/release.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/HakimIno/gool)](https://goreportcard.com/report/github.com/HakimIno/gool)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Gool is a modern, flexible, and comprehensive CLI tool for generating Go projects with customizable structure, pre-configured files, and dependencies. Build production-ready Go applications in seconds!
 
 ## 🚀 Features
@@ -296,6 +301,32 @@ curl http://localhost:8080/api/v1/health
 ## 🤝 Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+### Development Workflow
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### CI/CD Pipeline
+
+This project uses GitHub Actions for continuous integration and deployment:
+
+- **CI Pipeline**: Runs tests, linting, and builds on every push and pull request
+- **Release Pipeline**: Automatically creates releases when tags are pushed
+- **Cross-platform Builds**: Supports Linux, macOS, and Windows (amd64 and arm64)
+
+### Creating a Release
+
+To create a new release:
+
+1. Go to [Actions](https://github.com/HakimIno/gool/actions) tab
+2. Click on "Tag and Release" workflow
+3. Click "Run workflow"
+4. Enter the version tag (e.g., `v1.0.0`)
+5. The release will be created automatically with cross-platform binaries
 
 ## 📝 License
 

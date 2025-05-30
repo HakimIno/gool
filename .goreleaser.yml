@@ -1,0 +1,134 @@
+project_name: gool
+
+before:
+  hooks:
+    - go mod tidy
+    - go generate ./...
+
+builds:
+  - main: ./main.go
+    binary: gool
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    ignore:
+      - goos: windows
+        goarch: arm64
+    ldflags:
+      - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}} -X main.builtBy=goreleaser
+
+archives:
+  - format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end }}
+    format_overrides:
+    - goos: windows
+      format: zip
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+
+release:
+  github:
+    owner: HakimIno
+    name: gool
+  draft: false
+  prerelease: auto
+  name_template: "{{.ProjectName}}-v{{.Version}}"
+  footer: |
+    ## Installation
+
+    ### Option 1: Go Install
+    ```bash
+    go install github.com/HakimIno/gool@{{.Tag}}
+    ```
+
+    ### Option 2: Download Binary
+    Download the appropriate binary for your platform from the assets above.
+
+    ### Option 3: Install Script
+    ```bash
+    curl -sf https://gobinaries.com/HakimIno/gool | sh
+    ```
+
+    ## What's Changed
+    Full Changelog: https://github.com/HakimIno/gool/compare/{{.PreviousTag}}...{{.Tag}}
+
+brews:
+  - repository:
+      owner: HakimIno
+      name: homebrew-tap
+    homepage: "https://github.com/HakimIno/gool"
+    description: "Modern Go project scaffolding tool"
+    license: "MIT"
+
+nfpms:
+  - file_name_template: '{{ .ProjectName }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+    homepage: https://github.com/HakimIno/gool
+    description: |-
+      Gool is a modern, flexible, and comprehensive CLI tool for generating Go projects
+      with customizable structure, pre-configured files, and dependencies.
+    maintainer: HakimIno <your-email@example.com>
+    license: MIT
+    vendor: Gool CLI
+    formats:
+      - apk
+      - deb
+      - rpm
+
+dockers:
+  - image_templates:
+      - "ghcr.io/hakimino/gool:{{ .Tag }}-amd64"
+      - "ghcr.io/hakimino/gool:latest-amd64"
+    dockerfile: Dockerfile
+    use: buildx
+    build_flag_templates:
+      - "--platform=linux/amd64"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.title={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.version={{.Version}}"
+
+  - image_templates:
+      - "ghcr.io/hakimino/gool:{{ .Tag }}-arm64"
+      - "ghcr.io/hakimino/gool:latest-arm64"
+    dockerfile: Dockerfile
+    use: buildx
+    build_flag_templates:
+      - "--platform=linux/arm64"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.title={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.version={{.Version}}"
+    goarch: arm64
+
+docker_manifests:
+  - name_template: "ghcr.io/hakimino/gool:{{ .Tag }}"
+    image_templates:
+      - "ghcr.io/hakimino/gool:{{ .Tag }}-amd64"
+      - "ghcr.io/hakimino/gool:{{ .Tag }}-arm64"
+  - name_template: "ghcr.io/hakimino/gool:latest"
+    image_templates:
+      - "ghcr.io/hakimino/gool:latest-amd64"
+      - "ghcr.io/hakimino/gool:latest-arm64" 
